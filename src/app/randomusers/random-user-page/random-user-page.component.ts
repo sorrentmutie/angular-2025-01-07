@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RandomUsersService } from '../random-users.service';
 import { RandomUserResponse, Result } from '../random-user.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-random-user-page',
@@ -11,14 +12,17 @@ import { RandomUserResponse, Result } from '../random-user.model';
 })
 export class RandomUserPageComponent {
 
-   results: Result[] | undefined = undefined;
+   // results: Result[] | undefined = undefined;
+   results$: Observable<Result[]> | undefined = undefined;
+
 
    constructor(private randomUsersService: RandomUsersService) {
 
-       this.randomUsersService.getRandomUsers().subscribe(
-        (data) => {
-          this.results = data.results;
-        });
+       this.results$ = this.randomUsersService.getFilteredRandomUsers();
 
+      //  this.randomUsersService.getFilteredRandomUsers().subscribe(
+      //   (data) => {
+      //     this.results = data;
+      //   });
     }
 }

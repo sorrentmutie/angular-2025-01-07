@@ -1,7 +1,7 @@
 <p>random-user-page works!</p>
 
 
-<div *ngFor="let person of results">
+<div *ngFor="let person of results$ | async">
   <div class="card" style="width: 18rem;">
     <img src="{{person.picture.large}}" class="card-img-top" alt="...">
     <div class="card-body">
