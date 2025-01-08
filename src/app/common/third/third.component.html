@@ -1,2 +1,22 @@
 <p>third works!</p>
 <input #myInput type="text" (keyup)="onKeyup(myInput.value)" >
+
+
+<form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
+    <input formControlName="firstName" type="text" class="form-control" placeholder="Inserisci il Nome">
+    <input formControlName="lastName" type="text" class="form-control" placeholder="Inserisci il Cognome">
+
+    <button class="btn btn-success" [disabled]="myGroup.invalid" type="submit">OK</button>
+
+</form>
+
+
+<!-- <input class="form-control" [formControl]="name"> -->
+
+<!-- <hr/>
+Direct value: {{name.value}}
+
+
+<hr/>
+Observable value: {{name$ | async}} -->
+

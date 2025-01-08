@@ -14,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RandomUserPageComponent } from './randomusers/random-user-page/random-user-page.component';
 import { ProductPipe } from './products/product.pipe';
 import { ThirdComponent } from './common/third/third.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
 
 @NgModule({
@@ -36,7 +36,8 @@ import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
