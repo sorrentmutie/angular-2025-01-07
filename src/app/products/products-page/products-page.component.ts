@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Product } from '../product';
+import { ProductsService } from '../products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products-page',
@@ -7,47 +9,35 @@ import { Product } from '../product';
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css'
 })
-export class ProductsPageComponent {
+export class ProductsPageComponent implements OnDestroy {
 
    products: Product[] | undefined = undefined;
    discountProducts: Product[] | undefined = undefined;
+   subscription: Subscription | undefined = undefined;
 
-   constructor(){
-     this.products = this.getProducts();
-     this.discountProducts = this.getDiscountProducts();
-   }
+   constructor(private productService: ProductsService){
 
-   getDiscountProducts(): Product[] {
-     return [
-      {id: 8, name: "Radio", description: "Radio AM/FM", price: 50,
-        imageUrl: "https://via.placeholder.com/150"},
-     ]
-   }
+    // const x = fetch('https://jsonplaceholder.typicode.com/posts');
 
-   getProducts(): Product[] {
-      return [
-        { id:1, name: "Frigorifero",
-           description: "Frigorifero Samsung",
-            price: 500, imageUrl: "https://via.placeholder.com/150"},
-            {
-              id: 2, name: "TV Color",
-               description: "TV 4k",
-               price: 300, imageUrl: "https://via.placeholder.com/150"
-            },
-            {
-              id: 3, name: "Microwave",
-               description: "4500 W",
-               price: 120, imageUrl: "https://via.placeholder.com/150"
-            }
-      ];
+    //this.products = this.productService.getProducts();
+
+   this.subscription =  this.productService.getProductsAsObservable()
+      .subscribe(prods => {
+           this.products = prods;
+      });
+
+    this.discountProducts = this.productService.getDiscountProducts();
    }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
+
 
    removeProduct(product: Product){
      const index = this.products?.indexOf(product);
      if(index !== undefined && index !== -1){
        this.products?.splice(index, 1);
      }
-
    }
 
    removeDiscountProduct(product: Product){

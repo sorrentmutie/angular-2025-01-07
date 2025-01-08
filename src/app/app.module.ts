@@ -10,6 +10,8 @@ import { FooterComponent } from './common/footer/footer.component';
 import { ProductsTableComponent } from './products/products-table/products-table.component';
 import { ProductsPageComponent } from './products/products-page/products-page.component';
 import { ProductsReorderPageComponent } from './products/products-reorder-page/products-reorder-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RandomUserPageComponent } from './randomusers/random-user-page/random-user-page.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { ProductsReorderPageComponent } from './products/products-reorder-page/p
     FooterComponent,
     ProductsTableComponent,
     ProductsPageComponent,
-    ProductsReorderPageComponent
+    ProductsReorderPageComponent,
+    RandomUserPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
