@@ -8,17 +8,19 @@
         <th>Prezzo</th>
         <th>Descrizione</th>
         <th>Immagine</th>
+        <th>Data</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products">
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.description}}</td>
+        <td>{{product | productStar | uppercase}}</td>
+        <td>{{product.price | currency: 'EUR'}}</td>
+        <td>{{product.description |lowercase}}</td>
         <td><img style="display:block;margin:auto"
           src="{{product.imageUrl}}" alt="{{product.name}}" width="100" height="100"></td>
-        <td>
+        <td>{{product.releaseDate | date: 'dd/MM/yyyy' }}</td>
+          <td>
           <button (click)="removeProduct(product)"   class="btn btn-danger">Elimina</button>
         </td>
         </tr>

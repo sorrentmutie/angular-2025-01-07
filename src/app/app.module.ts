@@ -12,6 +12,10 @@ import { ProductsPageComponent } from './products/products-page/products-page.co
 import { ProductsReorderPageComponent } from './products/products-reorder-page/products-reorder-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RandomUserPageComponent } from './randomusers/random-user-page/random-user-page.component';
+import { ProductPipe } from './products/product.pipe';
+import { ThirdComponent } from './common/third/third.component';
+import { FormsModule } from '@angular/forms';
+import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,16 @@ import { RandomUserPageComponent } from './randomusers/random-user-page/random-u
     ProductsTableComponent,
     ProductsPageComponent,
     ProductsReorderPageComponent,
-    RandomUserPageComponent
+    RandomUserPageComponent,
+    ProductPipe,
+    ThirdComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

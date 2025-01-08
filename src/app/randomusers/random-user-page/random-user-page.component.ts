@@ -18,6 +18,7 @@ export class RandomUserPageComponent {
 
    constructor(private randomUsersService: RandomUsersService) {
 
+      console.log('RandomUserPageComponent created');
        this.results$ = this.randomUsersService.getFilteredRandomUsers();
 
       //  this.randomUsersService.getFilteredRandomUsers().subscribe(

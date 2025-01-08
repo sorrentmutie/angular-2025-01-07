@@ -32,6 +32,7 @@ export class FirstComponent {
       name: "Product 1",
       description: "Description 1",
       price: 100,
+      releaseDate: new Date(2021, 1, 1),
       imageUrl: "https://via.placeholder.com/150",
      // category: { id: 5, name: "Category 5"}
     };

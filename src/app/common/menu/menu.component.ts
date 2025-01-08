@@ -9,6 +9,9 @@ import { filter, map, of } from 'rxjs';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+
+
+
    myObservable = of(1,2,3,4,5,6,7,8,9,10)
      .pipe(
        map( x => x * 3),
@@ -24,6 +27,7 @@ export class MenuComponent {
 
    constructor(public specialService: SpecialService) {
     //myObservable.subscribe(myObserver);
+    console.log('MenuComponent created');
    }
 
    clickButton(){
