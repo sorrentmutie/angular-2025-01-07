@@ -21,6 +21,10 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { FirstInterceptor } from './common/interceptors/first.interceptor';
 import { SecondInterceptor } from './common/interceptors/second.interceptor';
+import { SpinnerComponent } from './common/spinner/spinner.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -38,13 +42,16 @@ import { SecondInterceptor } from './common/interceptors/second.interceptor';
     HeroFormComponent,
     WelcomeComponent,
     NotFoundComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
     ReactiveFormsModule
   ],
   providers: [

@@ -8,26 +8,26 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { SpinnerService } from '../../interceptors/spinner.service';
 
 @Injectable()
 export class SecondInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private spinnerService: SpinnerService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log('SecondInterceptor');
     console.log(request);
+    this.spinnerService.showSpinner();
     const observableResponse = next.handle(request)
       .pipe(
         tap( httpEvent => {
         if(httpEvent instanceof HttpResponse){
-          console.log('SecondInterceptor Response');
-          console.log(httpEvent);
+          this.spinnerService.hideSpinner();
         }
       }),
       catchError( (error: HttpErrorResponse) => {
-        console.log('SecondInterceptor Error');
-        console.log(error);
+        this.spinnerService.hideSpinner();
         // return of(new HttpResponse({  }));
         return throwError(error);
       })
