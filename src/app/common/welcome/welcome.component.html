@@ -1,1 +1,8 @@
 <p>welcome works!</p>
+<button (click)="start()">Inizia generazione customer</button>
+
+<ul>
+  <li *ngFor="let c of customers">
+    {{c.name}} - {{c.city}}
+  </li>
+</ul>
