@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { last, Observable } from 'rxjs';
+import { debounceTime, last, Observable } from 'rxjs';
 import { MyValidator } from './myValidator';
+import { ThirdService } from './third.service';
 
 @Component({
   selector: 'app-third',
@@ -18,18 +19,33 @@ export class ThirdComponent {
 
     const name = this.myGroup.get('firstName')?.value;
     const surname = this.myGroup.get('lastName')?.value;
+
+    this.service.postSomeData({name, job: surname})
+      .subscribe( response => {
+        console.log(response);
+      });
+
+
   }
 
 
   // name= new FormControl("");
   // name$ : Observable<string | null> | undefined = undefined;
 
-   constructor(private fb: FormBuilder) {
+   constructor(private fb: FormBuilder, private service: ThirdService) {
 
     this.myGroup = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       lastName: ['', [MyValidator]],
     });
+
+    this.myGroup.get('firstName')?.valueChanges
+      .pipe( debounceTime(1500))
+
+      .subscribe( testo => {
+        console.log(testo);
+      });
+
 
 
 
