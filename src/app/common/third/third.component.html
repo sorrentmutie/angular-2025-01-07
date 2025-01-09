@@ -16,6 +16,10 @@
     </div>
 
     <input formControlName="lastName" type="text" class="form-control" placeholder="Inserisci il Cognome">
+    <div *ngIf="lastName && lastName.errors && lastName.errors['myValidator']">
+      Il cognome deve cominciare con la lettera s
+    </div>
+
 
     <button class="btn btn-success" [disabled]="myGroup.invalid" type="submit">OK</button>
 

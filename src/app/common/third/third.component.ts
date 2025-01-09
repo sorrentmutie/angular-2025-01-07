@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { last, Observable } from 'rxjs';
+import { MyValidator } from './myValidator';
 
 @Component({
   selector: 'app-third',
@@ -27,7 +28,7 @@ export class ThirdComponent {
 
     this.myGroup = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(4)]],
-      lastName: [''],
+      lastName: ['', [MyValidator]],
     });
 
 
