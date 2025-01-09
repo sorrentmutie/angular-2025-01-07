@@ -24,6 +24,7 @@ import { SecondInterceptor } from './common/interceptors/second.interceptor';
 import { SpinnerComponent } from './common/spinner/spinner.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyNotificationComponent } from './common/my-notification/my-notification.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     WelcomeComponent,
     NotFoundComponent,
     ProductDetailsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MyNotificationComponent
   ],
   imports: [
     BrowserModule,

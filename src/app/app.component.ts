@@ -12,10 +12,9 @@ export class AppComponent {
   appCounter = 42;
   secondAppCounter = 0;
 
-  constructor(private toastrService: ToastrService){
+  constructor(){
     console.log('AppComponent created');
-    this.toastrService.success('Hello world!', 'Toastr fun!');
-
+ 
     setInterval( () => {
       this.appCounter++;
     },5000)
