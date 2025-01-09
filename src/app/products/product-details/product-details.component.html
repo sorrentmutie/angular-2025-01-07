@@ -1,0 +1,14 @@
+<p>Id Prodotto: {{id}}</p>
+
+<div *ngIf="productDetails">
+  <h3>Dettagli Prodotto</h3>
+  <div class="card" style="width: 18rem;">
+    <img src="{{productDetails.imageUrl}}" class="card-img-top" alt="{{productDetails.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{productDetails.name}}</h5>
+      <p class="card-text">{{productDetails.description}}</p>
+      <p class="card-text">{{productDetails.price | currency: 'EUR'}}</p>
+      <p class="card-text">{{productDetails.releaseDate | date: 'dd/MM/yyyy'}}</p>
+    </div>
+  </div>
+</div>

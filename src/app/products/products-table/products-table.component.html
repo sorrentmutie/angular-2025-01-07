@@ -22,6 +22,7 @@
         <td>{{product.releaseDate | date: 'dd/MM/yyyy' }}</td>
           <td>
           <button (click)="removeProduct(product)"   class="btn btn-danger">Elimina</button>
+          <button (click)="gotoDetails(product.id)" class="btn btn-warning">Visualizza prodotto</button>
         </td>
         </tr>
     </tbody>

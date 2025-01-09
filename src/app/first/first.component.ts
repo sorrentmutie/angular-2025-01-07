@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from '../products/product';
 import { MyProduct } from '../products/my-product';
+import { Router } from '@angular/router';
 
 export type  MyPoint = {
   x: number;
@@ -19,12 +20,15 @@ export class FirstComponent {
    a: number = 1;
    b: number = 2;
 
-   constructor(){
+   constructor(private router: Router) {
     setInterval( () => {
       this.a = this.a + 1;
-    }  , 1000)
+    }  , 1000000)
    }
 
+   navigate(){
+      this.router.navigate(['/products']);
+   }
 
    doSomethingAgain(){
     const x: Product = {

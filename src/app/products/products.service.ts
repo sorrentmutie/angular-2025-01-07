@@ -28,7 +28,6 @@ export class ProductsService {
     // return of(this.getProducts());
   }
 
-
    getProducts(): Product[] {
       return [
         { id:1, name: "Frigorifero",
@@ -49,4 +48,15 @@ export class ProductsService {
             }
       ];
    }
+
+   getProductDetailsById(id: string): Observable<Product | null>{
+      const product = this.getProducts().find(p => p.id === +id);
+
+      if (product){
+        return of(product).pipe(delay(2000));
+      } else {
+        return of(null).pipe(delay(2000));
+      }
+   }
+
 }
