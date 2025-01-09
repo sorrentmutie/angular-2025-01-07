@@ -8,10 +8,11 @@ import { ThirdComponent } from './common/third/third.component';
 import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { FirstGuard } from './first.guard';
 
 const routes: Routes = [
   {path: 'first', component: FirstComponent},
-  {path: 'products', component: ProductsPageComponent},
+  {path: 'products', component: ProductsPageComponent, canActivate: [FirstGuard]},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'random', component: RandomUserPageComponent},
   {path: 'heroform', component: HeroFormComponent},
