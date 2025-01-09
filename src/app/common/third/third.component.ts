@@ -13,11 +13,10 @@ export class ThirdComponent {
 
   myGroup: FormGroup;
 
-
   onSubmit(){
 
     const name = this.myGroup.get('firstName')?.value;
-    const surname = this.myGroup.get('lastName')?.value;  
+    const surname = this.myGroup.get('lastName')?.value;
   }
 
 
@@ -50,6 +49,14 @@ export class ThirdComponent {
 
   onKeyup(value: string) {
     console.log(value);
+  }
+
+  get firstName(){
+    return this.myGroup.get('firstName');
+  }
+
+  get lastName(){
+    return this.myGroup.get('lastName');
   }
 
 }

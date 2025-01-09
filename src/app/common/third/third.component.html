@@ -4,6 +4,17 @@
 
 <form [formGroup]="myGroup" (ngSubmit)="onSubmit()">
     <input formControlName="firstName" type="text" class="form-control" placeholder="Inserisci il Nome">
+
+    <div *ngIf="firstName && firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+        <div *ngIf="firstName && firstName.errors && firstName.errors['required']">
+          Il Nome è obbligatorio
+        </div>
+        <div *ngIf="firstName && firstName.errors && firstName.errors['minlength']">
+          La lunghezza minima è 4
+        </div>
+
+    </div>
+
     <input formControlName="lastName" type="text" class="form-control" placeholder="Inserisci il Cognome">
 
     <button class="btn btn-success" [disabled]="myGroup.invalid" type="submit">OK</button>
