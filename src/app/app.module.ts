@@ -10,7 +10,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { ProductsTableComponent } from './products/products-table/products-table.component';
 import { ProductsPageComponent } from './products/products-page/products-page.component';
 import { ProductsReorderPageComponent } from './products/products-reorder-page/products-reorder-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RandomUserPageComponent } from './randomusers/random-user-page/random-user-page.component';
 import { ProductPipe } from './products/product.pipe';
 import { ThirdComponent } from './common/third/third.component';
@@ -19,6 +19,8 @@ import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
 import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
+import { FirstInterceptor } from './common/interceptors/first.interceptor';
+import { SecondInterceptor } from './common/interceptors/second.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,15 @@ import { ProductDetailsComponent } from './products/product-details/product-deta
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FirstInterceptor, multi: true ,
+
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: SecondInterceptor, multi: true
+
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
