@@ -16,16 +16,12 @@ export class ThirdComponent {
   myGroup: FormGroup;
 
   onSubmit(){
-
     const name = this.myGroup.get('firstName')?.value;
     const surname = this.myGroup.get('lastName')?.value;
-
     this.service.postSomeData({name, job: surname})
       .subscribe( response => {
         console.log(response);
       });
-
-
   }
 
 

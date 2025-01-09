@@ -16,6 +16,8 @@ import { ProductPipe } from './products/product.pipe';
 import { ThirdComponent } from './common/third/third.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
+import { WelcomeComponent } from './common/welcome/welcome.component';
+import { NotFoundComponent } from './common/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { HeroFormComponent } from './heroes-form/hero-form/hero-form.component';
     RandomUserPageComponent,
     ProductPipe,
     ThirdComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    WelcomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
