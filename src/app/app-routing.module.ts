@@ -9,10 +9,11 @@ import { WelcomeComponent } from './common/welcome/welcome.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { ProductDetailsComponent } from './products/product-details/product-details.component';
 import { FirstGuard } from './first.guard';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: 'first', component: FirstComponent},
-  {path: 'products', component: ProductsPageComponent, canActivate: [FirstGuard]},
+  {path: 'products', component: ProductsPageComponent, canActivate: [FirstGuard, AuthGuard]},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'random', component: RandomUserPageComponent},
   {path: 'heroform', component: HeroFormComponent},

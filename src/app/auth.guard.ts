@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FirstGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {}
+  constructor(private authService: AuthService,
+    private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-    console.log('FirstGuard');
-    //this.router.navigate(['']);
-    return of(true);
+
+
+    if(!this.authService.isLogged){
+      this.router.navigate(['']);
+      return of(this.authService.isLogged);
+    }
+    return of(this.authService.isLogged);
   }
 
 }
